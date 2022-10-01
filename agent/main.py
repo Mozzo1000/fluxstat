@@ -5,6 +5,7 @@ import signal
 import sys
 from datetime import datetime
 import time
+import argparse
 import psutil
 from metrics import CPU, Memory, Disk
 
@@ -36,8 +37,13 @@ class FluxRequestHandler(BaseHTTPRequestHandler):
         self.set_headers()
         self.wfile.write(json.dumps(response).encode('utf-8'))
 
-def run_server():
-    server_address = ('', 8001)
+def main():
+
+    parser = argparse.ArgumentParser("Fluxstate Agent")
+    parser.add_argument("-a", "--address", type=str, default="localhost", help="Address of http server")
+    parser.add_argument("-p", "--port", type=int, default=8001, help="Port of http server")
+
+    server_address = (parser.parse_args().address, parser.parse_args().port)
     httpd = ThreadingHTTPServer(server_address, FluxRequestHandler)
 
     def signal_handler(sig, frame):
@@ -49,4 +55,4 @@ def run_server():
     httpd.serve_forever()
 
 if __name__ == '__main__':
-    run_server()
+    main()
