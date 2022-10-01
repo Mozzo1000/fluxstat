@@ -1,4 +1,4 @@
-# fluxstat
+# ![alt text](assets/icon.png  "fluxstat logo") fluxstat
 A system metrics exporter intended for devices on a local and small network. `fluxstat` uses a JSON based system for exposing metric data and intentionally does **NOT** use the [OpenMetrics](https://openmetrics.io/) standard.
 
 ## Exposed metrics
