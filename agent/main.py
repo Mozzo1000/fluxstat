@@ -30,8 +30,9 @@ class FluxRequestHandler(BaseHTTPRequestHandler):
                 "updated_at": datetime.now().isoformat()
             }
         else:
-            # TODO: Change message to send json instead of the default html
-            self.send_error(HTTPStatus.NOT_FOUND.value)
+            self.error_content_type = "application/json"
+            self.error_message_format = '{"status": %(code)d, "message": "%(message)s"}'
+            self.send_error(HTTPStatus.NOT_FOUND.value, "Not found")
 
         self.send_response(HTTPStatus.OK.value)
         self.set_headers()
