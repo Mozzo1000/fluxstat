@@ -85,6 +85,7 @@ The aim is to support `Windows`, `Mac` and `Linux` but at the moment not all ope
 | Operating system | Version | 
 | -----------------|:--------|
 | Windows 10       | 21H1    |
+| Mac OS           | 11.6.8  |
 
 
 ## License
