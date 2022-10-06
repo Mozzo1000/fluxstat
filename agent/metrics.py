@@ -40,10 +40,8 @@ class Memory():
 class Disk():
     def __init__(self):
         all_disks = psutil.disk_partitions()
-        print(len(all_disks))
         disks = {}
         for index, disk in enumerate(all_disks):
-            print(disk.device)
             usage_info = psutil.disk_usage(disk.mountpoint)
             disks["disk_" + str(index)] = {
                 "name": disk.device,
