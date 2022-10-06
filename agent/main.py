@@ -22,7 +22,7 @@ class FluxRequestHandler(BaseHTTPRequestHandler):
         if self.path == "/metrics":
             response = {
                 "system": {
-                    "uptime: ": round(time.time() - psutil.boot_time()),
+                    "uptime": round(time.time() - psutil.boot_time()),
                     "cpu": CPU().toJSON(),
                     "memory": Memory().toJSON(),
                     "disk": Disk().toJSON()
